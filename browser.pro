@@ -8,7 +8,9 @@ QT += gui webenginewidgets
 
 TEMPLATE = app
 TARGET = browser
-INCLUDEPATH += .
+INCLUDEPATH += . 
+
+#LIBS+= /usr/lib/libstdc++.so
 
 # You can make your code fail to compile if you use deprecated APIs.
 # In order to do so, uncomment the following line.

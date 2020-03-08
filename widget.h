@@ -2,7 +2,7 @@
 #define WIDGET_H
 
 #include <QWidget>
-#include <QWebEngineView>
+#include <QtWebEngineWidgets/QWebEngineView>
 #include <QUrl>
 #include <QLineEdit>
 #include <QPushButton>

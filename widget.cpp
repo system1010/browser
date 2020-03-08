@@ -2,6 +2,7 @@
 #include <QTimer>
 #include <QToolButton>
 #include <QLabel>
+#include <QProcess>
 Widget::Widget(QWidget *parent) :
     QWidget(parent)
 {
@@ -13,7 +14,7 @@ Widget::Widget(QWidget *parent) :
     currentWebView = qwevnode->QWEVTab;
     tabWidget = new QTabWidget;
     tabWidget->addTab(qwevnode->QWEVTab, tr("https://google.ru"));
-    tabWidget->setTabsClosable(true);
+    //tabWidget->setTabsClosable(true);
     urlLineEdit = new QLineEdit;
     backButton = new QPushButton;
     backButton->setText("<<");
@@ -48,17 +49,8 @@ Widget::Widget(QWidget *parent) :
     connect(tabWidget, SIGNAL(currentChanged(int)), this, SLOT(tabSelected()));
     connect(tabWidget, SIGNAL(tabCloseRequested(int)), this, SLOT(closeTab_(int)));
     //connect(currentWebView, &QWebEngineView::urlChanged, [this](const QUrl &url)
-    QTimer *timer = new QTimer(this);
-    connect(timer, &QTimer::timeout, [this,timer]{if (Url1==Url)currentWebView->load(Url);timer->stop();Url=NULL;Url1=NULL;});
-    connect(currentWebView->page(), &QWebEnginePage::linkHovered, [this, timer](const QString &url) {
-        if(!url.isEmpty()){
-        Url1=url;
-        timer->start(2000);
-        Url = url;
-        }else timer->stop();
-    });
+    
 }
-
 
 void Widget::closeTab_(int index)
 {
